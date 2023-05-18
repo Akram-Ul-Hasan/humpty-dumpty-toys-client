@@ -9,7 +9,7 @@ const Carousel = ({ img, id }) => {
         <a href={`#slide${Id === 1 ? 6 : Id - 1}`} className="btn btn-circle bg-slate-200 hover:bg-orange-400 text-black">
           ❮
         </a>
-        <a href={`#slide${(Id % 6) + 1}`} className="btn btn-circle">
+        <a href={`#slide${(Id % 6) + 1}`} className="btn btn-circle bg-slate-200 hover:bg-orange-400 text-black">
           ❯
         </a>
       </div>
