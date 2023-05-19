@@ -80,7 +80,7 @@ const AuthProvider = ({ children }) => {
       //   }
     });
     return () => {
-      return unsubscribe();
+       unsubscribe();
     };
   }, []);
   const authInfo = {
