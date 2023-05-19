@@ -89,6 +89,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     signIn,
     googleSignIn,
+    githubSignIn,
     logOut,
     setDisplayNamePhotoUrl
   };

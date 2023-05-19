@@ -67,7 +67,7 @@ const Login = () => {
                 </p>
                 
               </div>
-            {/* from */}
+            {/* Login from */}
             <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -100,7 +100,7 @@ const Login = () => {
                 <p className="label-text-alt">
                   Don't have an Account?
                   <Link to="/login/register" className=" link link-hover">
-                    {" "}
+                    
                     Register
                   </Link>
                 </p>
@@ -108,7 +108,7 @@ const Login = () => {
               
             </form>
             <p className="text-error ms-10 ">{error}</p>
-            <div className="divider text-sm">or Login via</div> 
+            <div className="divider text-sm mx-10">or Login via</div> 
             <div className="mx-7 mb-7 flex flex-col gap-3">
               <button
                 onClick={handleGoogleSignIn}
