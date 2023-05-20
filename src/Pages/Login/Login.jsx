@@ -51,7 +51,7 @@ const Login = () => {
         console.log(error.message);
       });
   };
-  return (
+  return ( 
     <div>
       
         <div className="hero-content flex-col lg:flex-row">

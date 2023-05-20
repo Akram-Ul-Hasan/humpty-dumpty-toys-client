@@ -33,7 +33,7 @@ const {user,logOut} = useContext(AuthContext)
             <Link to="/pages/bookings">My Toys</Link>
           </li>
           <li>
-            <Link to="/pages/bookings">Add a Toy</Link>
+            <Link to="/add-toy">Add a Toy</Link>
           </li>
           <li>
           <Link to="">
