@@ -12,6 +12,7 @@ const AddToy = () => {
     const quantity = form.quantity.value;
     const price = form.price.value;
     const rating = form.rating.value;
+    const description = form.description.value
     const newToy = {
       toyName,
       toyImage,
@@ -21,6 +22,7 @@ const AddToy = () => {
       quantity,
       price,
       rating,
+      description
     };
     fetch('http://localhost:5000/toys',{
         method: "POST",
@@ -147,6 +149,18 @@ const AddToy = () => {
                 />
               </div>
             </div>
+            <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Description</span>
+                </label>
+                <textarea
+                  type="text"
+                  name="description"
+                  placeholder="Description"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
 
             <div className="form-control mt-6">
               <button className="btn btn-primary">Submit</button>

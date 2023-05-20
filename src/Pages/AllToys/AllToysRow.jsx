@@ -4,7 +4,6 @@ const AllToysRow = ({toy}) => {
     const { sellerName, toyName, toyImage, category, price, quantity} =toy;
   return (
     <tr>
-      
       <td>
         <div className="avatar">
           <div className="rounded w-20 h-20">
