@@ -4,14 +4,12 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const NavBar = () => {
-const {user,logOut} = useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
-    .then(()=>{
-        
-    })
-    .then((error) => console.log(error));
+      .then(() => {})
+      .then((error) => console.log(error));
   };
 
   const navItems = (
@@ -26,7 +24,7 @@ const {user,logOut} = useContext(AuthContext)
       <li>
         <Link to="/all-toys">All Toys</Link>
       </li>
-      
+
       {user?.email ? (
         <>
           <li>
@@ -36,19 +34,30 @@ const {user,logOut} = useContext(AuthContext)
             <Link to="/add-toy">Add a Toy</Link>
           </li>
           <li>
-          <Link to="">
-            <button onClick={handleLogOut}>Log out</button>
-          </Link>
-        </li>
-          
-        </>
-       ) : ( 
-        <li>
-            <Link to="/login">
-              <button>Login</button>
+            <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+            
+              <img
+                className="rounded-full w-8 h-8 tooltip tooltip-open tooltip-bottom"
+                data-tip="hello"
+                src={user?.photoURL}
+                alt=""
+              />
+            </div>
+          </li>
+          <li>
+            <Link to="">
+              <button onClick={handleLogOut}>Log out</button>
             </Link>
           </li>
-       )} 
+          
+        </>
+      ) : (
+        <li>
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+        </li>
+      )}
     </>
   );
   return (
@@ -79,15 +88,13 @@ const {user,logOut} = useContext(AuthContext)
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          <img className="h-10 w-20" src={logo} alt="" /><h2 className="text-3xl font-bold">Humpty Dumpty</h2>
+          <img className="h-10 w-20" src={logo} alt="" />
+          <h2 className="text-3xl font-bold">Humpty Dumpty</h2>
         </Link>
       </div>
-      <div className="navbar-end hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">      
-        {navItems}
-        </ul>
+      <div className="navbar-end hidden md:flex">
+        <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
-      
     </div>
   );
 };
