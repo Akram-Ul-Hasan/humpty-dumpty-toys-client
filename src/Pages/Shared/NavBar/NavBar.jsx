@@ -30,7 +30,7 @@ const {user,logOut} = useContext(AuthContext)
       {user?.email ? (
         <>
           <li>
-            <Link to="/pages/bookings">My Toys</Link>
+            <Link to="/my-toys">My Toys</Link>
           </li>
           <li>
             <Link to="/add-toy">Add a Toy</Link>
