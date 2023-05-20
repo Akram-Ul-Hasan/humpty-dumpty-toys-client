@@ -3,18 +3,27 @@ import MyToysRow from "./MyToysRow";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const MyToys = () => {
-    const [toys, setToys] = useState([]);
-    const { user } = useContext(AuthContext);
-    useEffect(() => {
-        fetch(`http://localhost:5000/toys?sellerEmail=${user?.email}`)
-          .then((res) => res.json())
-          .then((data) => {
-            setToys(data);
-            console.log("toys:", toys);
-            console.log(data);
-          });
-      }, []);
+  const [toys, setToys] = useState([]);
+  const { user } = useContext(AuthContext);
+  useEffect(() => {
+    fetch(`http://localhost:5000/toys?sellerEmail=${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setToys(data);
+        console.log("toys:", toys);
+        console.log(data);
+      });
+  }, []);
 
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/toys/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
 
   return (
     <div className="mx-10">
@@ -34,7 +43,11 @@ const MyToys = () => {
           </thead>
           <tbody>
             {toys.map((toy) => (
-              <MyToysRow key={toy._id} toy={toy}></MyToysRow>
+              <MyToysRow
+                key={toy._id}
+                toy={toy}
+                handleDelete={handleDelete}
+              ></MyToysRow>
             ))}
           </tbody>
         </table>

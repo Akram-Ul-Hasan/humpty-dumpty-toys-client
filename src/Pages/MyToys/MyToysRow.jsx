@@ -1,14 +1,25 @@
-import React from 'react';
+import React from "react";
 
-const MyToysRow = ({toy}) => {
-    const { sellerName, toyName, toyImage, category, price, quantity} =toy;
-    return (
-        <tr>
-      
+
+const MyToysRow = ({ toy, handleDelete }) => {
+
+    const handleUpdate =()=>{
+
+    }
+
+  const { _id, sellerName, toyName, toyImage, category, price, quantity } = toy;
+  return (
+    <tr>
       <td>
         <div className="avatar">
           <div className="rounded w-20 h-20">
-            {toyImage && <img className="" src={toyImage} alt="Avatar Tailwind CSS Component" />}
+            {toyImage && (
+              <img
+                className=""
+                src={toyImage}
+                alt="Avatar Tailwind CSS Component"
+              />
+            )}
           </div>
         </div>
       </td>
@@ -19,10 +30,13 @@ const MyToysRow = ({toy}) => {
       <td>${price}</td>
 
       <th>
-        <button>View Details</button>
+        <div className="flex flex-col gap-4">
+          <button onClick={handleUpdate} className="btn btn-sm btn-success btn-outline">Update</button>
+          <button onClick={()=>handleDelete(_id)} className="btn btn-sm btn-error btn-outline">Delete</button>
+        </div>
       </th>
     </tr>
-    );
+  );
 };
 
 export default MyToysRow;
