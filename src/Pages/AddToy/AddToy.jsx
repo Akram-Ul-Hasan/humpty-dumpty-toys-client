@@ -22,7 +22,7 @@ const AddToy = () => {
       price,
       rating,
     };
-    fetch('http://localhost:5000/addtoy',{
+    fetch('http://localhost:5000/toys',{
         method: "POST",
         headers: {
             'content-type' : 'application/json'
