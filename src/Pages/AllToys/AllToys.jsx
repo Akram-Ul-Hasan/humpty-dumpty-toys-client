@@ -5,67 +5,66 @@ import AllToysRow from "./AllToysRow";
 const AllToys = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
-  //const [refresh, SetRefresh] = useState(true);
-  
+
+
   useEffect(() => {
     fetch("http://localhost:5000/toys")
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
-        console.log("toys:",toys);
-      })
+        console.log("toys:", toys);
+      });
   }, []);
 
-//   const handleDelete = (id) => {
-//     const proceed = confirm("Are you sure you want ro delete");
-//     if (proceed) {
-//       fetch(`https://car-doctor-server-five-teal.vercel.app/bookings/${id}`, {
-//         method: "DELETE",
-//       })
-//         .then((res) => res.json())
-//         .then((data) => {
-//           console.log(data);
-//           if (data.deletedCount > 0) {
-//             alert("Deleted successfully");
-//             SetRefresh(!refresh);
-//           }
-//         });
-//     }
-//   };
-//   const handleBookingConfirm = (id) => {
-//     const proceed = confirm("Are you sure, You want to proceed?");
-//     if (proceed) {
-//       fetch(`https://car-doctor-server-five-teal.vercel.app/bookings/${id}`, {
-//         method: "PATCH",
-//         headers: {
-//           "content-type": "application/json",
-//         },
-//         body: JSON.stringify({ status: "confirm" }),
-//       })
-//         .then((res) => res.json())
-//         .then((data) => {
-//           console.log(data);
-//           if (data.modifiedCount > 0) {
-//             const remaining = bookings.filter((booking) => booking._id !== id);
-//             const updated = bookings.find((booking) => booking._id === id);
-//             updated.status = "confirm";
-//             const newBooking = [updated, ...remaining];
-//             setBookings(newBooking);
-//           }
-//         });
-//     }
-//   };
+  const handleSearchToy = event =>{
+    event.preventDefault();
+    const form = event.target;
+    const searchToy = form.searchToy.value;
+    console.log(searchToy);
+    fetch(`http://localhost:5000/toys?toyName=${searchToy}`)
+    .then(res=> res.json())
+    .then(data=> {
+      setToys(data);
+      console.log(data);
+    })
+    form.reset();
+  }
+
+ 
   return (
     <div className="mx-10">
-      {/* <h2>Total Order: {bookings.length}</h2> */}
+      <div className="form-control w-1/5 mx-auto mb-10">
+        <form onSubmit={handleSearchToy} className="input-group">
+          <input
+            type="text"
+            name='searchToy'
+            placeholder="Search by toy name"
+            className="input input-bordered "
+          />
+          <button className="btn btn-square">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}
           <thead>
             <tr>
-              <th>
-                Toy Photo
-              </th>
+              <th>Toy Photo</th>
               <th>Toy Name</th>
               <th>Sub-category</th>
               <th>Seller Name</th>
@@ -79,8 +78,6 @@ const AllToys = () => {
               <AllToysRow
                 key={toy._id}
                 toy={toy}
-                //handleDelete={handleDelete}
-                //handleBookingConfirm={handleBookingConfirm}
               ></AllToysRow>
             ))}
           </tbody>
