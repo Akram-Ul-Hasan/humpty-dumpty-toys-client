@@ -17,6 +17,8 @@ const UpdateToy = () => {
           description,
         };
         console.log(updatedToy)
+        const proceed = confirm("Are you sure you want ro update");
+    if (proceed) {
         fetch(`https://humpty-dumpty-toys-server.vercel.app/toys/${toy._id}`, {
           method: "PATCH",
           headers: {
@@ -27,8 +29,11 @@ const UpdateToy = () => {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-          
+            if (data.modifiedCount > 0) {
+              alert("Updated successfully");
+            }
           });
+        }
       };
 
     return (

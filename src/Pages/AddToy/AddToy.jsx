@@ -38,7 +38,9 @@ const AddToy = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            
+            if (data.acknowledged == true) {
+              alert("Toy added successfully");
+            }
             
         })
   };

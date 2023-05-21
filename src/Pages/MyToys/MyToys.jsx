@@ -4,6 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const MyToys = () => {
   const [toys, setToys] = useState([]);
+  const [refresh, SetRefresh] = useState(true);
   const { user } = useContext(AuthContext);
   useEffect(() => {
     fetch(`https://humpty-dumpty-toys-server.vercel.app/toys?sellerEmail=${user?.email}`)
@@ -13,16 +14,23 @@ const MyToys = () => {
         console.log("toys:", toys);
         console.log(data);
       });
-  }, []);
+  }, [refresh]);
 
   const handleDelete = (id) => {
+    const proceed = confirm("Are you sure you want ro delete");
+    if (proceed) {
     fetch(`https://humpty-dumpty-toys-server.vercel.app/toys/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if (data.deletedCount > 0) {
+          alert("Deleted successfully");
+          SetRefresh(!refresh);
+        }
       });
+    }
   };
 
   return (
