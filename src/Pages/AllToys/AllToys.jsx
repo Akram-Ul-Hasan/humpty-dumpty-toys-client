@@ -5,7 +5,19 @@ import AllToysRow from "./AllToysRow";
 const AllToys = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
+  const [selectedOption, setSelectedOption] = useState('');
 
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+    console.log(selectedOption);
+
+    fetch(`http://localhost:5000/toys?sort=${selectedOption}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setToys(data);
+        console.log("toys:", toys);
+      });
+  };
 
   useEffect(() => {
     fetch("http://localhost:5000/toys")
@@ -16,28 +28,31 @@ const AllToys = () => {
       });
   }, []);
 
-  const handleSearchToy = event =>{
+  const handleSearchToy = (event) => {
     event.preventDefault();
     const form = event.target;
     const searchToy = form.searchToy.value;
     console.log(searchToy);
     fetch(`http://localhost:5000/toys?toyName=${searchToy}`)
-    .then(res=> res.json())
-    .then(data=> {
-      setToys(data);
-      console.log(data);
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        setToys(data);
+        console.log(data);
+      });
     form.reset();
-  }
+  };
 
- 
   return (
     <div className="mx-10">
+      <div className="text-center mb-5">
+        <h2 className="text-3xl font-bold">All Toys:</h2>
+      </div>
+
       <div className="form-control w-1/5 mx-auto mb-10">
         <form onSubmit={handleSearchToy} className="input-group">
           <input
             type="text"
-            name='searchToy'
+            name="searchToy"
             placeholder="Search by toy name"
             className="input input-bordered "
           />
@@ -59,6 +74,19 @@ const AllToys = () => {
           </button>
         </form>
       </div>
+      <div className="text-end mb-5">
+        <select
+          className="select select-bordered select-sm w-full max-w-xs"
+          value={selectedOption}
+          onChange={handleOptionChange}
+        >
+          <option disabled value="">
+            Sort by
+          </option>
+          <option value="false">Ascending</option>
+          <option value="true">Descending</option>
+        </select>
+      </div>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}
@@ -75,10 +103,7 @@ const AllToys = () => {
           </thead>
           <tbody>
             {toys.map((toy) => (
-              <AllToysRow
-                key={toy._id}
-                toy={toy}
-              ></AllToysRow>
+              <AllToysRow key={toy._id} toy={toy}></AllToysRow>
             ))}
           </tbody>
         </table>

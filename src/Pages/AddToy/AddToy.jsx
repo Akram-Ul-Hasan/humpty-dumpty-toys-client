@@ -10,7 +10,7 @@ const AddToy = () => {
     const sellerEmail = form.sellerEmail.value;
     const category = form.category.value;
     const quantity = form.quantity.value;
-    const price = form.price.value;
+    const price = parseFloat(form.price.value);
     const rating = form.rating.value;
     const description = form.description.value
     const newToy = {
