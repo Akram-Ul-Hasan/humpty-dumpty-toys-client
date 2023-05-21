@@ -6,7 +6,6 @@ import Header from "../Header/Header";
 const Home = () => (
     <div>
         <Header></Header>
-
         <Gallery></Gallery>
         <Category></Category>
     </div>
