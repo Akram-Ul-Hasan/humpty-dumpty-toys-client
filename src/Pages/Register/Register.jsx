@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 import img from "../../assets/register.jpg";
+import useTitle from "../../hooks/useTitle";
 
 const Register = () => {
   const [error, setError] = useState("");
@@ -32,7 +33,7 @@ const Register = () => {
       setError("Password should be at least 6 character");
       return;
     }
-
+    useTitle('Register');
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;

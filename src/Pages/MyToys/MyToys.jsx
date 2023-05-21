@@ -3,6 +3,7 @@ import MyToysRow from "./MyToysRow";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const MyToys = () => {
+  useTitle('My Toys');
   const [toys, setToys] = useState([]);
   const [refresh, SetRefresh] = useState(true);
   const { user } = useContext(AuthContext);
