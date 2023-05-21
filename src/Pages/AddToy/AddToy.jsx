@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import img from "../../assets/add-toy.jpg";
+import { AuthContext } from "../../Provider/AuthProvider";
 const AddToy = () => {
+  const {user} = useContext(AuthContext);
+  
   const handleNewToy = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -24,7 +27,8 @@ const AddToy = () => {
       rating,
       description
     };
-    fetch('http://localhost:5000/toys',{
+    console.log(newToy)
+    fetch('https://humpty-dumpty-toys-server.vercel.app/toys',{
         method: "POST",
         headers: {
             'content-type' : 'application/json'
@@ -80,6 +84,7 @@ const AddToy = () => {
               <input
                 type="text"
                 name="sellerName"
+                defaultValue={user?.displayName}
                 placeholder="Seller name"
                 className="input input-bordered"
                 required
@@ -92,6 +97,7 @@ const AddToy = () => {
               <input
                 type="email"
                 name="sellerEmail"
+                defaultValue={user?.email}
                 placeholder="Seller email"
                 className="input input-bordered"
                 required

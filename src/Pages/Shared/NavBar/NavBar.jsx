@@ -89,7 +89,7 @@ const NavBar = () => {
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
           <img className="h-10 w-20" src={logo} alt="" />
-          <h2 className="text-3xl font-bold">Humpty Dumpty</h2>
+          <h2 className="text-2xl font-bold">Humpty Dumpty</h2>
         </Link>
       </div>
       <div className="navbar-end hidden md:flex">

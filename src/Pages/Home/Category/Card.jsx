@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 const Card = ({ toy }) => {
   const { _id, toyName, toyImage, price, rating } = toy;
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card w-full bg-base-100 shadow-xl">
       <figure>
         <img
+        className="w-40 h-40"
           src={toyImage}
         />
       </figure>

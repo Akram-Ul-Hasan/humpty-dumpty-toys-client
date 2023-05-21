@@ -6,7 +6,7 @@ const MyToys = () => {
   const [toys, setToys] = useState([]);
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:5000/toys?sellerEmail=${user?.email}`)
+    fetch(`https://humpty-dumpty-toys-server.vercel.app/toys?sellerEmail=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -16,7 +16,7 @@ const MyToys = () => {
   }, []);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/toys/${id}`, {
+    fetch(`https://humpty-dumpty-toys-server.vercel.app/toys/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

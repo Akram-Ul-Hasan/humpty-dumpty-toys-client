@@ -17,7 +17,7 @@ const UpdateToy = () => {
           description,
         };
         console.log(updatedToy)
-        fetch(`http://localhost:5000/toys/${toy._id}`, {
+        fetch(`https://humpty-dumpty-toys-server.vercel.app/toys/${toy._id}`, {
           method: "PATCH",
           headers: {
             "content-type": "application/json",

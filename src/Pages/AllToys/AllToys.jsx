@@ -11,7 +11,7 @@ const AllToys = () => {
     setSelectedOption(event.target.value);
     console.log(selectedOption);
 
-    fetch(`http://localhost:5000/toys?sort=${selectedOption}`)
+    fetch(`https://humpty-dumpty-toys-server.vercel.app/toys?sort=${selectedOption}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -20,7 +20,7 @@ const AllToys = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://humpty-dumpty-toys-server.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -33,7 +33,7 @@ const AllToys = () => {
     const form = event.target;
     const searchToy = form.searchToy.value;
     console.log(searchToy);
-    fetch(`http://localhost:5000/toys?toyName=${searchToy}`)
+    fetch(`https://humpty-dumpty-toys-server.vercel.app/toys?toyName=${searchToy}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -48,7 +48,7 @@ const AllToys = () => {
         <h2 className="text-3xl font-bold">All Toys:</h2>
       </div>
 
-      <div className="form-control w-1/5 mx-auto mb-10">
+      <div className="form-control mx-auto mb-10">
         <form onSubmit={handleSearchToy} className="input-group">
           <input
             type="text"

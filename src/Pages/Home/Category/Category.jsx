@@ -10,7 +10,7 @@ const Category = () => {
 
     
     useEffect(() => {
-        fetch(`http://localhost:5000/toys?category=Avengers`)
+        fetch(`https://humpty-dumpty-toys-server.vercel.app/toys?category=Avengers`)
           .then((res) => res.json())
           .then((data) => {
             setAvengersToys(data);
@@ -18,7 +18,7 @@ const Category = () => {
       }, []);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/toys?category=Transformers`)
+        fetch(`https://humpty-dumpty-toys-server.vercel.app/toys?category=Transformers`)
           .then((res) => res.json())
           .then((data) => {
             setTransformersToys(data);
@@ -26,7 +26,7 @@ const Category = () => {
       }, []);
       const starWars= 'Star Wars';
     useEffect(() => {
-        fetch(`http://localhost:5000/toys?category=${starWars}`)
+        fetch(`https://humpty-dumpty-toys-server.vercel.app/toys?category=${starWars}`)
           .then((res) => res.json())
           .then((data) => {
             setStarWarsToys(data);
