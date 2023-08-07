@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+
 import headerImg from "../../../assets/header.jpg";
 const Header = () => {
   useEffect(() => {
@@ -32,6 +33,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };
