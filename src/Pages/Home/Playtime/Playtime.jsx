@@ -3,14 +3,14 @@ import img from '../../../assets/playtime.jpg'
 const Playtime = () => {
   return (
     <div
-      className="hero h-[400px] mt-20"
+      className="hero mt-20"
       style={{
         backgroundImage:
           `url(${img})`,
       }}
     >
       <div className="hero-overlay bg-opacity-80"></div>
-      <div className="hero-content text-left text-neutral-content flex flex-col md:flex-row gap-16">
+      <div className="hero-content text-left text-neutral-content flex flex-col md:flex-row gap-16 py-32">
         <div className="w-1/2">
           <h1 className="mb-5 text-5xl font-bold">Playtime with Toys</h1>
           <p className="mb-5">
